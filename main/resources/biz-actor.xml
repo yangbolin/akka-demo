@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans
+		http://www.springframework.org/schema/beans/spring-beans-2.0.xsd"
+	default-autowire="byName">
+
+	<bean id="pagingQueryActor" class="com.alibaba.akka.actor.PagingQueryActor"
+		scope="prototype" />
+
+	<bean id="queryActor" class="com.alibaba.akka.actor.QueryActor"
+		scope="prototype" />
+
+	<bean id="actorSystem" class="akka.actor.ActorSystem"
+		factory-method="create" destroy-method="shutdown" scope="singleton">
+		<constructor-arg value="actorSystem" />
+	</bean>
+
+	<bean id="dataQueryService" class="com.alibaba.akka.DataQueryService" />
+</beans>
